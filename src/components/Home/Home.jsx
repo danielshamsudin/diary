@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Button, Card, Col } from 'react-bootstrap';
+import { Button, Card, CardGroup, Col, Row } from 'react-bootstrap';
 import { db } from '../../firebase'
 
 const Home = () => {
@@ -42,20 +42,27 @@ const Home = () => {
 			{
 				show ? <div>
 					<br />
-					{data.map((item, idx) => (
-						<Col>
-							<Card key={idx} style={{ width: '18rem' }}>
-								<Card.Body>
-									<Card.Title>Entry #{idx + 1}</Card.Title>
-									<Card.Text>
-										{item.date}, {item.time}
-										<br />
-										{item.text}
-									</Card.Text>
-								</Card.Body>
-							</Card>
-						</Col>
-					))}
+					<Row xs={1} md={2} className="g-4" style={{ margin: "auto", marginLeft: "auto", marginRight: "auto" }}>
+						{data.map((item, idx) => (
+							<Col>
+								{/* <CardGroup> */}
+								<Card key={idx} style={{ width: "20rem", height: "100%" }}>
+									<Card.Header>{ }</Card.Header>
+									<Card.Body>
+										<Card.Title>Entry #{idx + 1}</Card.Title>
+										<Card.Text>
+											<u>{item.date}, {item.time}</u>
+											{/* <br /> */}
+											<br />
+											{item.text}
+										</Card.Text>
+									</Card.Body>
+									<Card.Footer>{ }</Card.Footer>
+								</Card>
+								{/* </CardGroup> */}
+							</Col>
+						))}
+					</Row>
 				</div> : null
 			}
 		</>
